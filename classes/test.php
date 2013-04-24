@@ -67,6 +67,7 @@ abstract class test implements observable, \countable
 	private $debugMode = false;
 	private $codeCoverage = false;
 	private $classHasNotVoidMethods = false;
+	private $provider = null;
 
 	private static $namespace = null;
 	private static $defaultEngine = self::defaultEngine;
@@ -82,6 +83,7 @@ abstract class test implements observable, \countable
 			->setMockGenerator()
 			->setReflectionMethodFactory()
 			->enableCodeCoverage()
+			->setProvider()
 		;
 
 		$class = ($reflectionClassFactory ? $reflectionClassFactory($this) : new \reflectionClass($this));
@@ -1374,5 +1376,22 @@ abstract class test implements observable, \countable
 	private static function isRegex($namespace)
 	{
 		return preg_match('/^([^\\\[:alnum:][:space:]]).*\1.*$/', $namespace) === 1;
+	}
+
+	public function setProvider(test\provider $provider = null)
+	{
+		$this->provider = $provider ?: new \Hoathis\Atoum\Provider\Praspel();
+
+		return $this;
+	}
+
+	public function getProvider()
+	{
+		return $this->provider;
+	}
+
+	public function generate($description, $maxData = 5)
+	{
+		return $this->getProvider()->generate($description, $maxData);
 	}
 }
