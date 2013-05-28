@@ -1380,7 +1380,7 @@ abstract class test implements observable, \countable
 
 	public function setProvider(test\provider $provider = null)
 	{
-		$this->provider = $provider ?: new \Hoathis\Atoum\Provider\Praspel();
+		$this->provider = $provider ?: new \Hoathis\Atoum\Test\Provider\Praspel();
 
 		return $this;
 	}
