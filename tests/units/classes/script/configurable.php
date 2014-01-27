@@ -87,14 +87,14 @@ class configurable extends atoum\test
 		$this
 			->if($configurable = new testedClass(uniqid()))
 			->then
-				->exception(function() use ($configurable, & $file) { $configurable->useConfigFile($file = uniqid()); })
+				->exception(function() use ($configurable, & $file) { $configurable->useConfigFile($file = DIRECTORY_SEPARATOR . uniqid()); })
 					->isInstanceOf('mageekguy\atoum\includer\exception')
 					->hasMessage('Unable to find configuration file \'' . $file . '\'')
 			->if($includer = new \mock\mageekguy\atoum\includer())
 			->and($this->calling($includer)->includePath = function() {})
 			->and($configurable->setIncluder($includer))
 			->then
-				->object($configurable->useConfigFile($file = uniqid()))->isIdenticalTo($configurable)
+				->object($configurable->useConfigFile($file = DIRECTORY_SEPARATOR . uniqid()))->isIdenticalTo($configurable)
 				->mock($includer)->call('includePath')->withArguments($file)->once()
 				->array($configurable->getConfigFiles())->isEqualTo(array($file))
 		;

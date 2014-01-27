@@ -135,4 +135,4 @@ class decorator implements atoum\autoloader\decorator
     {
         return $this->coverageInstrumentationEnabled;
     }
-} 
+}

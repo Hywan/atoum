@@ -369,7 +369,7 @@ class runner extends atoum\test
 			->and($runner->setLocale($locale = new \mock\mageekguy\atoum\locale()))
 			->then
 				->exception(function() use ($runner, & $file) {
-						$runner->useConfigFile($file = uniqid());
+						$runner->useConfigFile($file = DIRECTORY_SEPARATOR . uniqid());
 					}
 				)
 					->isInstanceOf('mageekguy\atoum\includer\exception')
