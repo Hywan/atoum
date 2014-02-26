@@ -91,7 +91,7 @@ class controller
                 $cache->lock();
             }
 
-            $stream= $this->adapter->fopen($path, $mode, $options & STREAM_USE_PATH);
+            $stream = $this->adapter->fopen($path, $mode, $options & STREAM_USE_PATH);
 
             if ($this->adapter->is_resource($stream))
             {
