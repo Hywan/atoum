@@ -1,5 +1,5 @@
 {
-	"name": "atoum/atoum",
+	"name": "hywan/atoum",
 	"type": "library",
 	"description": "Simple modern and intuitive unit testing framework for PHP 5.3+",
 	"keywords": ["TDD","atoum","test","unit testing"],
@@ -38,9 +38,6 @@
 		"ext-tokenizer": "*",
 		"ext-xml": "*"
 	},
-	"replace": {
-		"mageekguy/atoum": "*"
-	},
 	"bin":
 	[
 		"bin/atoum"
@@ -49,7 +46,7 @@
 	{
 		"classmap": [ "classes/" ]
 	},
-    "suggest": {
-        "ext-mbstring": "Provides support for UTF-8 strings"
-    }
+	"suggest": {
+		"ext-mbstring": "Provides support for UTF-8 strings"
+	}
 }
